@@ -1,0 +1,5 @@
+.vscode
+__pycache__
+financeapp/__pycache__
+myfinance/__pycache__
+myfinance/secret_keys.py

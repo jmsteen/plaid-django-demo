@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit budget category</title>
+</head>
+<body>
+  {% block content %}
+  <h1>Budget: {{ budget.date|date:"F Y" }}</h1>
+  <form
+    action="{% url 'myfinance:category-update' budget_id=budget.id category_id=category.id %}"
+    method="POST"
+  >
+    {% csrf_token %}
+    <input type="text" name="description" value="{{ category.description }}" />
+    <input type="number" name="amount" value="{{ amount }}" />
+    <button>Update</button>
+  </form>
+  {% endblock %}
+</body>

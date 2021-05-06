@@ -1,0 +1,920 @@
+[
+  {
+    "model": "myfinance.category",
+    "pk": 1,
+    "fields": {
+      "description": "Car and Transportation",
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 2,
+    "fields": {
+      "description": "Car Insurance",
+      "parent_category": 1,
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 3,
+    "fields": {
+      "description": "Car Payment",
+      "parent_category": 1,
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 4,
+    "fields": {
+      "description": "Gas and Charging",
+      "parent_category": 1,
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 5,
+    "fields": {
+      "description": "Parking and Fees",
+      "parent_category": 1,
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 6,
+    "fields": {
+      "description": "Public and Other Transportation",
+      "parent_category": 1,
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 7,
+    "fields": {
+      "description": "Service and Repairs",
+      "parent_category": 1,
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 20,
+    "fields": {
+      "description": "Bills",
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 21,
+    "fields": {
+      "description": "Phone",
+      "parent_category": 20,
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 22,
+    "fields": {
+      "description": "Internet",
+      "parent_category": 20,
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 23,
+    "fields": {
+      "description": "Television",
+      "parent_category": 20,
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 24,
+    "fields": {
+      "description": "Utilities",
+      "parent_category": 20,
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 40,
+    "fields": {
+      "description": "Business",
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 41,
+    "fields": {
+      "description": "Advertising",
+      "parent_category": 40,
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 42,
+    "fields": {
+      "description": "Legal",
+      "parent_category": 40,
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 43,
+    "fields": {
+      "description": "Supplies and Equipment",
+      "parent_category": 40,
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 44,
+    "fields": {
+      "description": "Shipping",
+      "parent_category": 40,
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 45,
+    "fields": {
+      "description": "Business Taxes",
+      "parent_category": 40,
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 60,
+    "fields": {
+      "description": "Education",
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 61,
+    "fields": {
+      "description": "Books",
+      "custom": "False",
+      "parent_category": 60
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 62,
+    "fields": {
+      "description": "Online Courses",
+      "custom": "False",
+      "parent_category": 60
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 63,
+    "fields": {
+      "description": "Student Loans",
+      "custom": "False",
+      "parent_category": 60
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 64,
+    "fields": {
+      "description": "Tuition",
+      "custom": "False",
+      "parent_category": 60
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 65,
+    "fields": {
+      "description": "Tutor",
+      "custom": "False",
+      "parent_category": 60
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 80,
+    "fields": {
+      "description": "Entertainment",
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 81,
+    "fields": {
+      "description": "General",
+      "custom": "False",
+      "parent_category": 80
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 82,
+    "fields": {
+      "description": "Arts",
+      "custom": "False",
+      "parent_category": 80
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 83,
+    "fields": {
+      "description": "Movies and TV Shows",
+      "custom": "False",
+      "parent_category": 80
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 84,
+    "fields": {
+      "description": "Music",
+      "custom": "False",
+      "parent_category": 80
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 85,
+    "fields": {
+      "description": "Magazines and Newspapers",
+      "custom": "False",
+      "parent_category": 80
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 86,
+    "fields": {
+      "description": "Live Entertainment",
+      "custom": "False",
+      "parent_category": 80
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 120,
+    "fields": {
+      "description": "Financial",
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 121,
+    "fields": {
+      "description": "CPA Fees",
+      "custom": "False",
+      "parent_category": 120
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 122,
+    "fields": {
+      "description": "Financial Advisor",
+      "custom": "False",
+      "parent_category": 120
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 123,
+    "fields": {
+      "description": "Life Insurance",
+      "custom": "False",
+      "parent_category": 120
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 124,
+    "fields": {
+      "description": "Investing",
+      "custom": "False",
+      "parent_category": 120
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 125,
+    "fields": {
+      "description": "Savings",
+      "custom": "False",
+      "parent_category": 120
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 126,
+    "fields": {
+      "description": "Taxes",
+      "custom": "False",
+      "parent_category": 120
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 140,
+    "fields": {
+      "description": "Food",
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 141,
+    "fields": {
+      "description": "Alcohol",
+      "custom": "False",
+      "parent_category": 140
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 142,
+    "fields": {
+      "description": "Coffee Shops",
+      "custom": "False",
+      "parent_category": 140
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 143,
+    "fields": {
+      "description": "Fast Food",
+      "custom": "False",
+      "parent_category": 140
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 144,
+    "fields": {
+      "description": "Groceries",
+      "custom": "False",
+      "parent_category": 140
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 145,
+    "fields": {
+      "description": "Restaurants",
+      "custom": "False",
+      "parent_category": 140
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 160,
+    "fields": {
+      "description": "Giving",
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 161,
+    "fields": {
+      "description": "Charity",
+      "custom": "False",
+      "parent_category": 160
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 162,
+    "fields": {
+      "description": "Gifts",
+      "custom": "False",
+      "parent_category": 160
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 180,
+    "fields": {
+      "description": "Health and Wellness",
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 181,
+    "fields": {
+      "description": "Dentist",
+      "custom": "False",
+      "parent_category": 180
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 182,
+    "fields": {
+      "description": "Doctor",
+      "custom": "False",
+      "parent_category": 180
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 183,
+    "fields": {
+      "description": "Eyecare",
+      "custom": "False",
+      "parent_category": 180
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 184,
+    "fields": {
+      "description": "Gym",
+      "custom": "False",
+      "parent_category": 180
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 185,
+    "fields": {
+      "description": "Health Insurance",
+      "custom": "False",
+      "parent_category": 180
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 186,
+    "fields": {
+      "description": "Pharmacy",
+      "custom": "False",
+      "parent_category": 180
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 187,
+    "fields": {
+      "description": "Sports and Recreation",
+      "custom": "False",
+      "parent_category": 180
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 188,
+    "fields": {
+      "description": "Supplements",
+      "custom": "False",
+      "parent_category": 180
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 200,
+    "fields": {
+      "description": "Home",
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 201,
+    "fields": {
+      "description": "Furniture and Decor",
+      "custom": "False",
+      "parent_category": 200
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 202,
+    "fields": {
+      "description": "Home Improvement",
+      "custom": "False",
+      "parent_category": 200
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 203,
+    "fields": {
+      "description": "Home Insurance",
+      "custom": "False",
+      "parent_category": 200
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 204,
+    "fields": {
+      "description": "Home Supplies",
+      "custom": "False",
+      "parent_category": 200
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 205,
+    "fields": {
+      "description": "Lawn and Garden",
+      "custom": "False",
+      "parent_category": 200
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 206,
+    "fields": {
+      "description": "Mortgage and Rent",
+      "custom": "False",
+      "parent_category": 200
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 207,
+    "fields": {
+      "description": "Home Services",
+      "custom": "False",
+      "parent_category": 200
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 220,
+    "fields": {
+      "description": "Income",
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 221,
+    "fields": {
+      "description": "Bonus",
+      "custom": "False",
+      "parent_category": 220
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 222,
+    "fields": {
+      "description": "Interest Income",
+      "custom": "False",
+      "parent_category": 220
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 223,
+    "fields": {
+      "description": "Self Employment Income",
+      "custom": "False",
+      "parent_category": 220
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 224,
+    "fields": {
+      "description": "Paycheck",
+      "custom": "False",
+      "parent_category": 220
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 225,
+    "fields": {
+      "description": "Reimbursement",
+      "custom": "False",
+      "parent_category": 220
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 226,
+    "fields": {
+      "description": "Rental Income",
+      "custom": "False",
+      "parent_category": 220
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 227,
+    "fields": {
+      "description": "Returned Purchases",
+      "custom": "False",
+      "parent_category": 220
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 240,
+    "fields": {
+      "description": "Kids",
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 241,
+    "fields": {
+      "description": "Allowance",
+      "custom": "False",
+      "parent_category": 240
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 242,
+    "fields": {
+      "description": "Baby Supplies",
+      "custom": "False",
+      "parent_category": 240
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 243,
+    "fields": {
+      "description": "Babysitter & Daycare",
+      "custom": "False",
+      "parent_category": 240
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 244,
+    "fields": {
+      "description": "Child Support",
+      "custom": "False",
+      "parent_category": 240
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 245,
+    "fields": {
+      "description": "Kids Activities",
+      "custom": "False",
+      "parent_category": 240
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 246,
+    "fields": {
+      "description": "Toys",
+      "custom": "False",
+      "parent_category": 240
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 260,
+    "fields": {
+      "description": "Miscellaneous",
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 300,
+    "fields": {
+      "description": "Self Improvement and Care",
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 301,
+    "fields": {
+      "description": "Hair and Salon",
+      "custom": "False",
+      "parent_category": 300
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 302,
+    "fields": {
+      "description": "Counseling and Therapy",
+      "custom": "False",
+      "parent_category": 300
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 303,
+    "fields": {
+      "description": "Personal Development",
+      "custom": "False",
+      "parent_category": 300
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 304,
+    "fields": {
+      "description": "Spa and Massage",
+      "custom": "False",
+      "parent_category": 300
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 320,
+    "fields": {
+      "description": "Pets",
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 321,
+    "fields": {
+      "description": "Pet Food and Supplies",
+      "custom": "False",
+      "parent_category": 320
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 322,
+    "fields": {
+      "description": "Pet Grooming",
+      "custom": "False",
+      "parent_category": 320
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 323,
+    "fields": {
+      "description": "Pet Sitting",
+      "custom": "False",
+      "parent_category": 320
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 324,
+    "fields": {
+      "description": "Veterinary",
+      "custom": "False",
+      "parent_category": 320
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 340,
+    "fields": {
+      "description": "Shopping",
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 342,
+    "fields": {
+      "description": "Clothing",
+      "custom": "False",
+      "parent_category": 340
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 343,
+    "fields": {
+      "description": "Electronics & Software",
+      "custom": "False",
+      "parent_category": 340
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 344,
+    "fields": {
+      "description": "Hobbies",
+      "custom": "False",
+      "parent_category": 340
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 342,
+    "fields": {
+      "description": "Sporting Goods",
+      "custom": "False",
+      "parent_category": 340
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 360,
+    "fields": {
+      "description": "Transfer",
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 361,
+    "fields": {
+      "description": "Credit Card Payment",
+      "custom": "False",
+      "parent_category": 360
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 362,
+    "fields": {
+      "description": "Transfer to another account",
+      "custom": "False",
+      "parent_category": 360
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 380,
+    "fields": {
+      "description": "Travel",
+      "custom": "False"
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 381,
+    "fields": {
+      "description": "Airplane",
+      "custom": "False",
+      "parent_category": 380
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 382,
+    "fields": {
+      "description": "Airbnb and Hotel",
+      "custom": "False",
+      "parent_category": 380
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 383,
+    "fields": {
+      "description": "Moving",
+      "custom": "False",
+      "parent_category": 380
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 384,
+    "fields": {
+      "description": "Rental Car & Taxi",
+      "custom": "False",
+      "parent_category": 380
+    }
+  },
+  {
+    "model": "myfinance.category",
+    "pk": 385,
+    "fields": {
+      "description": "Vacation",
+      "custom": "False",
+      "parent_category": 380
+    }
+  }
+]

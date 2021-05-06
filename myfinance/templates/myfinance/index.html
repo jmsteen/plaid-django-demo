@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {% load static %}
+  {% block title %}
+  <title>My Finances</title>
+  {% endblock %}
+</head>
+<body>
+  {% block content %}
+  <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
+  <h1>Dashboard</h1>
+  {% if logged_in %}
+  <h2>Budgets</h2>
+  {% if latest_budgets %}
+  <ul class='index-budget'>
+    {% for budget in latest_budgets %}
+    <li>
+      <a href="{% url 'myfinance:budget' budget.id %}"
+        >{{budget.date|date:"F Y"}}</a
+      >
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>No budgets have been created yet.</p>
+  {% endif %}
+  <h3>Add a budget</h3>
+  {% if form.errors %} {% for error in form.errors %}
+  <p><strong>{{ error }}</strong></p>
+  {% endfor %} {% endif %}
+  <form action="/budget/new" method="POST">
+    {% csrf_token %}
+    <label for="id_date"></label>
+    <input type="month" id="id_date" name="date" />
+    <button>Submit</button>
+  </form>
+  <h2>Transactions</h2>
+  <a href="{% url 'myfinance:get-transactions' %}">Refresh transactions</a>
+  {% if latest_transactions %}
+  <table>
+    {% for transaction in latest_transactions %}
+    <tr class="transaction-row">
+      <td class="transaction-td-date">{{transaction.date}}</td>
+      <td class="transaction-td-name">{{transaction.name}}</td>
+      <td class="transaction-td-amount">{{transaction.amount}}</td>
+      <td class="transaction-td-category">{{transaction.category.1}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <a href="{% url 'myfinance:transactions' %}">All transactions</a>
+  {% else %} {% if error %}
+  <p>{{ error.display_message }}</p>
+  {% endif %}
+  <p>No transactions have been pulled yet.</p>
+  {% endif %}
+  <h2>Accounts</h2>
+  <button id="link-button">Link Account</button>
+  <a href="{% url 'myfinance:refresh-accounts' %}">Refresh accounts</a>
+  {% if accounts %}
+  <ul>
+    {% for account in accounts %}
+    <li>{{account.official_name}} - {{account.balances.current}}</li>
+    {% endfor %}
+  </ul>
+  {% else %} {% if error %}
+  <p>{{ error.display_message }}</p>
+  {% endif %}
+  <p>No transactions have been pulled yet.</p>
+  {% endif %} {% else %}
+  <a href="{% url 'myfinance:signup' %}">Sign up</a>
+  <a href="{% url 'myfinance:log-in-form' %}">Login</a>
+  {% endif %}
+
+  <script type="text/javascript">
+    // Get cookie for CSRF token
+    //
+    function getCookie(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== "") {
+        const cookies = document.cookie.split(";");
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          // Does this cookie string begin with the name we want?
+          if (cookie.substring(0, name.length + 1) === name + "=") {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
+    }
+
+    const csrftoken = getCookie("csrftoken");
+
+    const myHeaders = new Headers({
+      "Content-Type": "text/plain",
+      "X-CSRFToken": csrftoken,
+    });
+
+    // Create and return new link token, which will be passed to the configs object
+    // through async await.
+    //
+    async function linkTokenFunc() {
+      // Fetch the link token from Plaid
+      //
+      const fetchLinkToken = async () => {
+        const response = await fetch("/create_link_token", {
+          method: "POST",
+          credentials: "same-origin",
+          headers: myHeaders,
+        });
+        const responseJSON = await response.json();
+        return responseJSON.link_token;
+      };
+
+      const configs = {
+        // 1. Pass a new link_token to Link.
+        token: await fetchLinkToken(),
+        onSuccess: async function (public_token, metadata) {
+          // 2a. Send the public_token to your app server.
+          // The onSuccess function is called when the user has successfully
+          // authenticated and selected an account to use.
+
+          await fetch("/get_access_token", {
+            method: "POST",
+            headers: myHeaders,
+            body: JSON.stringify({
+              public_token: public_token,
+              accounts: metadata.accounts,
+            }),
+          });
+        },
+        onExit: async function (err, metadata) {
+          // 2b. Gracefully handle the invalid link token error. A link token
+          // can become invalidated if it expires, has already been used
+          // for a link session, or is associated with too many invalid logins.
+          if (err != null && err.error_code === "INVALID_LINK_TOKEN") {
+            linkHandler.destroy();
+            linkHandler = Plaid.create({
+              ...configs,
+              token: await fetchLinkToken(),
+            });
+          }
+          if (err != null) {
+            // Handle any other types of errors.
+          }
+
+          window.location = "/";
+          // metadata contains information about the institution that the
+          // user selected and the most recent API request IDs.
+          // Storing this information can be helpful for support.
+        },
+      };
+
+      var linkHandler = Plaid.create(configs);
+      linkHandler.open();
+    }
+
+    document.getElementById("link-button").onclick = function () {
+      linkTokenFunc();
+    };
+  </script>
+  {% endblock %}
+</body>

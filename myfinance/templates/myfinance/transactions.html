@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {% load static %} {% block title %}
+  <title>All transactions</title>
+  {% endblock %}
+</head>
+<body>
+  {% block content %} {% if all_transactions %}
+  <table>
+    <tr class="transaction-list-header">
+      <th>Date</th>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Category</th>
+      <th>Account</th>
+    </tr>
+    {% for transaction in page_obj %}
+    <tr class="transaction-row" id="trans-id" data-transid="{{transaction.id}}">
+      <td class="transaction-td-date">{{transaction.date}}</td>
+      <td class="transaction-td-name">{{transaction.name}}</td>
+      <td class="transaction-td-amount">{{transaction.amount}}</td>
+      <td class="transaction-td-category">
+        <select
+          name="builtin_cat_id"
+          id="category-select"
+          onchange="updateTransCat('{{transaction.id}}', this.value);"
+        >
+          <option value="{{transaction.builtin_category.id}}">
+            {{transaction.builtin_category.description}}
+          </option>
+          {% for category in builtin_categories %}
+          <option value="{{category.id}}">{{ category.description }}</option>
+          {% endfor %}
+        </select>
+      </td>
+      <td class="transaction-td-account">
+        {{transaction.account.official_name}}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  <div class="pagination">
+    <span class="step-links">
+      {% if page_obj.has_previous %}
+      <a href="?page=1">&laquo; first</a>
+      <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+      {% endif %}
+
+      <span class="current">
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+      </span>
+
+      {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}">next</a>
+      <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
+    </span>
+  </div>
+  {% else %} {% if error %}
+  <p>{{ error.display_message }}</p>
+  {% endif %}
+  <p>No transactions have been pulled yet.</p>
+  {% endif %}
+  <script type="text/javascript">
+    // Get cookie for CSRF token
+    //
+    function getCookie(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== "") {
+        const cookies = document.cookie.split(";");
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          // Does this cookie string begin with the name we want?
+          if (cookie.substring(0, name.length + 1) === name + "=") {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
+    }
+
+    const csrftoken = getCookie("csrftoken");
+
+    const myHeaders = new Headers({
+      "Content-Type": "text/plain",
+      "X-CSRFToken": csrftoken,
+    });
+
+    // Create and return new link token, which will be passed to the configs object
+    // through async await.
+    //
+    // var select = document.getElementById("category-select");
+
+    // select.onchange = function updateTransCat() {
+    //   var trans_id = document.getElementById("trans-id").dataset.transid;
+    //   var selectedCatId = select.options[select.selectedIndex].value;
+
+    //   fetch("/trans_category_update", {
+    //     method: "POST",
+    //     headers: myHeaders,
+    //     body: JSON.stringify({
+    //       trans_id: trans_id,
+    //       cat_id: selectedCatId,
+    //     }),
+    //   });
+    // };
+
+    function updateTransCat(transId, selectedCatId) {
+      fetch("/trans_category_update", {
+        method: "POST",
+        headers: myHeaders,
+        body: JSON.stringify({
+          trans_id: transId,
+          cat_id: selectedCatId,
+        }),
+      });
+    }
+  </script>
+  {% endblock %}
+</body>

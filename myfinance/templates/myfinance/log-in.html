@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+</head>
+<body>
+  {% block content %}
+  <h1>Login below :-)</h1>
+  <form action="{% url 'myfinance:log-in' %}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Username" />
+    <input type="password" name="password" placeholder="Password" />
+    <button>Sign in</button>
+  </form>
+  {% endblock %}
+</body>

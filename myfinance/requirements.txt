@@ -1,0 +1,10 @@
+Jinja2>=2.9.5
+MarkupSafe==0.23
+Werkzeug>=0.14
+click==6.7
+itsdangerous==0.24
+requests==2.20.0
+# wsgiref==0.1.2
+# python_version < '3.8'
+plaid-python
+python-dotenv #==0.14.0F

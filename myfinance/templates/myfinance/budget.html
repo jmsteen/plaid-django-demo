@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+<body>
+  {% block content %}
+  <h1>Monthly budget: {{ budget.date|date:"F Y" }}</h1>
+  <form
+    action="{% url 'myfinance:bca-new' budget_id=budget.id %}"
+    method="POST"
+  >
+    {% csrf_token %}
+    <select name="category_id" id="category-select">
+      <option value="">--Choose a category--</option>
+      {% for category in categories %}
+      <option value="{{category.id}}">{{ category.description }}</option>
+      {% endfor %}
+    </select>
+    <button>Add</button>
+  </form>
+  <form action="{% url 'myfinance:category-new' budget.id %}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="description" placeholder="Enter new category" />
+    <button>Create</button>
+  </form>
+  <h2>Categories</h2>
+  <table class="bca-table">
+    <tr>
+      <th>Category</th>
+      <th>Budgeted</th>
+      <th>Actual</th>
+      <th></th>
+    </tr>
+
+    {% for bca in budgeted_amts %}
+    <tr class="transaction-row">
+      <td>{{ bca.category }}</td>
+      <td>$ {{ bca.amt }}</td>
+      <td>$ {{ bca.cat_sum }}</td>
+      <td>
+        <a
+          href="{% url 'myfinance:category-edit' budget_id=budget.id category_id=bca.id %}"
+          >Edit</a
+        >
+      </td>
+      <td>
+        <form
+          action="{% url 'myfinance:bca-delete' budget_id=budget.id category_id=bca.id %}"
+          method="POST"
+        >
+          {% csrf_token %}
+          <button>delete</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  <form action="/budget/delete" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="pk" value="{{ budget.pk }}" />
+    <button>Delete budget</button>
+  </form>
+  {% endblock %}
+</body>

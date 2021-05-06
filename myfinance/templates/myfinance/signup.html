@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signup</title>
+</head>
+<body>
+  {% block content %}
+  <form action="{% url 'myfinance:create-user' %}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Username" />
+    <input type="text" name="email" placeholder="Email" />
+    <input type="password" name="password" placeholder="Password" />
+    <button>Signup</button>
+  </form>
+  {% endblock %}
+</body>
